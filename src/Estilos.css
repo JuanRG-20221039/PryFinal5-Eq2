@@ -1,0 +1,23 @@
+.linkF {
+    list-style: none;
+    padding: 0;
+}
+
+.linksF {
+    text-decoration: none;
+    color: white;
+}
+
+.bodyF {
+    background-color: #023047;
+    color: white;
+    padding-top: 5px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.lista{
+    padding: 0;
+}

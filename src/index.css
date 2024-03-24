@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  position: relative;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, Roboto, Open Sans, Lato, Source Sans Pro, Nunito, sans-serif;
+}
+
+span,
+p {
+  font-family: sans-serif;
+}
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+ul li{
+  padding: 0;
 }

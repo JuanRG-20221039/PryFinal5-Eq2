@@ -1,0 +1,20 @@
+/* RECUPERACION DE CONTRASEÑA */
+.btnBuscar{
+    width: 50%;
+    background-color: #219ebc;
+    border: none;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.background-container {
+    width: 100%; /* Cambiado a 100% para cubrir toda la ventana */
+    height: 100%; /* Ajustado a 100vh para cubrir toda la altura de la ventana */
+    background-image: url('/public/images/fondo.png');
+    background-size: cover; /* Hace que la imagen cubra completamente el contenedor */
+    background-position: center;
+    padding: 20px; /* Añade padding para evitar que el contenido toque los bordes de la imagen */
+}
+.form{
+    width: 100%;
+}
