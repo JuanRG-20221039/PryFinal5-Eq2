@@ -24,6 +24,7 @@ export default function Login() {
     } catch (error) {
       console.error('Error durante el inicio de sesión:', error);
       // Manejar errores según sea necesario
+      alert('Error al iniciar sesion...');
     }
   };
 

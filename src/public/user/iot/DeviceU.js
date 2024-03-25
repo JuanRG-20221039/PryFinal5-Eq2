@@ -61,8 +61,13 @@ function DeviceU() {
 
   //WITCH DE LOS WIGEDS DEL IOT
   const handleSwitchEstado = () => {
-    const newEstado = data.dispositivo.estado === 1 ? 0 : 1;
-    handleUpdateField('estado', newEstado);
+    if(data.dispositivo.cerradura === 1){
+      alert('No puedes abrir la ventana, la cerradura esta colocada!');
+      return;
+    } else{
+      const newEstado = data.dispositivo.estado === 1 ? 0 : 1;
+      handleUpdateField('estado', newEstado);
+    }
   };
   // Función para manejar el cambio de estado de la cerradura
   const handleSwitchCerradura = () => {
