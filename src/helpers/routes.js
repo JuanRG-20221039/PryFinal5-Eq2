@@ -27,10 +27,10 @@ const routes = {
     iotDevicesU:'devices',
     iotDeviceU:'devices/:id',
     usuariosA: '/admin/users',
-    productsA: '/admin/products',
+    addProductos: '/admin/addProductos',
     iotA: '/admin/iot',
     SmartGlass: '/SmartGlass',
-    administradoresA: '/admin/administradores'
+    informacion: '/admin/informacion'
 }
 
 export default routes;

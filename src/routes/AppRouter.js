@@ -27,6 +27,8 @@ import ProductosRojos from '../public/pages/ProductosRojos';
 import ProductosTropicales from '../public/pages/ProductosTropicales';
 import ProductosSemillas from '../public/pages/ProductosSemillas';
 import Producto from '../public/pages/Producto';
+import Informacion from '../public/admin/Informacion';
+import AddProductos from '../public/admin/AddProductos';
 
 export default function AppRouter() {
 
@@ -66,6 +68,8 @@ export default function AppRouter() {
             <Route element={<PrivateRoute hasRole={roles.admin} />}>
                 <Route path={routes.usuariosA} element={<Users />} />
                 <Route path={routes.iotA} element={<Device />} />
+                <Route path={routes.informacion} element={<Informacion />} />
+                <Route path={routes.addProductos} element={<AddProductos />} />
             </Route>
             <Route path='*' element={<NotFoundPage />} />
         </Routes>

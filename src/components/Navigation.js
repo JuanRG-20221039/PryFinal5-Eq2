@@ -17,16 +17,12 @@ export default function Navigation() {
                     <Nav.Link as={NavLink} to={routes.productosRojos}>FrutosRojos</Nav.Link>
                     <Nav.Link as={NavLink} to={routes.productosTropicales}>Tropicales</Nav.Link>
                     <Nav.Link as={NavLink} to={routes.productosSemillas}>Semillas</Nav.Link>
-                    {/* <Nav.Link as={NavLink} to={routes.SmartGlass}>SmartGlass System</Nav.Link> */}
-                    {/* <Nav.Link as={NavLink} to={routes.quienesSomos}>QUIENES SOMOS</Nav.Link> */}
-                    {/* <Nav.Link as={NavLink} to={routes.faq}>FAQ</Nav.Link> */}
-                    {/* <Nav.Link as={NavLink} to={routes.contacto}>CONTACTO</Nav.Link> */}
                     {
                         hasRole('admin')?(
                             <NavDropdown title='ADMIN'>
                                 <NavDropdown.Item as={NavLink} to={routes.usuariosA}>Usuarios</NavDropdown.Item>
-                                <NavDropdown.Item as={NavLink} to={routes.productsA}>Productos</NavDropdown.Item>
-                                <NavDropdown.Item as={NavLink} to={routes.administradoresA}>Administradores</NavDropdown.Item>
+                                <NavDropdown.Item as={NavLink} to={routes.addProductos}>Productos</NavDropdown.Item>
+                                <NavDropdown.Item as={NavLink} to={routes.informacion}>Informacion</NavDropdown.Item>
                                 <NavDropdown.Item as={NavLink} to={routes.iotA}>Iot</NavDropdown.Item>
 
                             </NavDropdown>

@@ -1,0 +1,15 @@
+.table {
+    width: 100%;
+  }
+  
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  

@@ -53,10 +53,10 @@ function DeviceU() {
   };
 
   const iconosVariables = {
-    "Estado de la Ventana": faHouseChimneyWindow,
-    "Cerradura": faLock,
-    "Sensor de moviniento": faHand,
-    "Lluvia": faCloudRain
+    "estado": faHouseChimneyWindow,
+    "cerradura": faLock,
+    "pir": faHand,
+    "lluvia": faCloudRain
   };
 
   //WITCH DE LOS WIGEDS DEL IOT
@@ -143,24 +143,24 @@ function DeviceU() {
                 <div className="variable-card-container">
                   <Row>
                     {[
-                      { id: "Estado de la Ventana", index: 0 },
-                      { id: "Cerradura", index: 1 },
-                      { id: "Sensor de moviniento", index: 2 },
-                      { id: "Lluvia", index: 3 }
+                      { id: "Estado de la Ventana", key: "estado", icon: faHouseChimneyWindow },
+                      { id: "Cerradura", key: "cerradura", icon: faLock },
+                      { id: "Sensor de movimiento", key: "pir", icon: faHand },
+                      { id: "Lluvia", key: "lluvia", icon: faCloudRain }
                     ].map((variable) => {
-                      const variableData = data.variables.find(v => v._id === variable.id);
-                      const icono = iconosVariables[variable.id]; // Icono correspondiente a la variable
+                      const variableData = data.dispositivo[variable.key];
+                      const icono = iconosVariables[variable.key];
                       return (
                         <Col className='p-3' key={variable.id}>
                           <Card className='w-100' style={{ fontSize: 13, height:'90%' }}>
                             <Card.Header style={{ backgroundColor: '#219ebc', color: 'white' }}>
-                              <Card.Title style={{ fontSize: 30 }}>{variableData.ultimoValor}</Card.Title>
+                              <Card.Title style={{ fontSize: 30 }}>{variableData}</Card.Title>
                               <FontAwesomeIcon className='me-3' icon={icono} style={{color: "#fff",height:40, position:'absolute', marginTop:-40, marginLeft:75}} />
                             </Card.Header>
                             <Card.Body style={{ backgroundColor: 'white', color: 'black' }}>
-                              <Card.Text>{variableData._id}</Card.Text>
+                              <Card.Text>{variable.id}</Card.Text>
                               <Card.Text style={{ color: '#5E5E5E' }}>Última actividad</Card.Text>
-                              <Card.Text style={{ color: '#363636' }}>{formatFecha(variableData.ultimaFecha)}</Card.Text>
+                              <Card.Text style={{ color: '#363636' }}>{formatFecha(data.dispositivo.ultimaFecha)}</Card.Text>
                             </Card.Body>
                           </Card>
                         </Col>
