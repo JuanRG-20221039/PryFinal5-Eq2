@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import './AddProductos.css';
-import { hover } from '@testing-library/user-event/dist/hover';
 
 export default function AddProductos() {
     const [productos, setProductos] = useState([]);
