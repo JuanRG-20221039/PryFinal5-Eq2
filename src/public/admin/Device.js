@@ -34,7 +34,7 @@ export default function Device() {
 
         setUsuarios(usuarios.data)
         setLoadingU(false)
-
+        
     };
 
     const handleSelectUser = async (usuario) => {
@@ -55,9 +55,9 @@ export default function Device() {
         <Container className='mt-4'>
             <div style={{display:'flex',alignContent:'center'}}>
                 <FontAwesomeIcon className='me-3' icon={faTabletButton} style={{color: "#000000",height:40}} />
-                <h1>Dispositivos</h1>
+                <h1>𝘿𝙞𝙨𝙥𝙤𝙨𝙞𝙩𝙞𝙫𝙤𝙨</h1>
             </div>
-            <Button variant='primary' className='mb-4' onClick={() => nuevoDispositivo()}>Nuevo dispositivo</Button>
+            <Button style={{width:'50%'}} variant='success' className='mb-4' onClick={() => nuevoDispositivo()}>Nuevo dispositivo</Button>
             {
                 loading ? (<Cargando />) : (
                     <>
@@ -65,10 +65,10 @@ export default function Device() {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Estado de la puerta</th>
+                                    <th>Estado de la Ventana</th>
                                     <th>Cerradura</th>
-                                    <th>Moviniento</th>
-                                    <th>Lluvia</th>
+                                    <th>Deteccion de Moviniento</th>
+                                    <th>Sensor de Lluvia</th>
                                     <th>Asignado</th>
                                     <th>Estado del dispositivo</th>
                                 </tr>
@@ -84,7 +84,7 @@ export default function Device() {
                                         <td>{dispositivo.asignado ? 'Asignado' : 'No asignado'}</td>
                                         <td>
                                             <div className="d-grid gap-2">
-                                                <Button variant='warning' className='' onClick={() => handleAsignarClick(dispositivo._id)}>Asignar</Button>
+                                                <Button variant='primary' className='' onClick={() => handleAsignarClick(dispositivo._id)}>Asignar</Button>
                                                 <Button variant='danger' onClick={() => eliminarDispositivo(dispositivo._id)}>Eliminar</Button>
                                             </div>
                                         </td>

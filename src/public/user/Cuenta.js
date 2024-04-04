@@ -42,7 +42,7 @@ export default function Cuenta() {
               <p><strong>Nombre:</strong> {userData.nombre.nombre} {userData.nombre.apP} {userData.nombre.apM}</p>
               <p><strong>Email:</strong> {userData.datosCuenta.email}</p>
               <p><strong>Teléfono:</strong> {userData.telefono}</p>
-              <p><strong>Rol de Usuario:</strong> {userData.datosCuenta.rol}</p>
+              {/* <p><strong>Rol de Usuario:</strong> {userData.datosCuenta.rol}</p> */}
             </Card>
             <Card style={{width:'17%', marginLeft:-60}}>
               <img src='/images/usuario.png' alt="chat" style={{width:200}}/>

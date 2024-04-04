@@ -26,6 +26,9 @@ function Devices() {
             <FontAwesomeIcon className='me-3' icon={faHouseSignal} style={{color: "#000000",height:40}} />
             <h1>𝘿𝙞𝙨𝙥𝙤𝙨𝙞𝙩𝙞𝙫𝙤𝙨</h1>
         </div>
+
+        <Button style={{margin:15}} variant='success'>Agregar Dispositivo</Button>
+
         <Table striped bordered hover responsive>
             <thead>
                 <tr>
