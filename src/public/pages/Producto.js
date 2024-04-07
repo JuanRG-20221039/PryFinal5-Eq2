@@ -9,7 +9,7 @@ export default function ProductosRojos() {
   const { id } = useParams(); // Obtener el ID del producto de la URL
   const [producto, setProducto] = useState(null); // Estado para almacenar el producto
 
-  const { data, loading } = useFetch('https://apipry-dev-gjxn.1.us-1.fl0.io/productos');
+  const { data, loading } = useFetch('https://apipry.onrender.com/productos');
 
   useEffect(() => {
     // Filtrar el producto correspondiente al ID de la URL

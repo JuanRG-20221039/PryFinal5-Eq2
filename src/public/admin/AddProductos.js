@@ -19,7 +19,7 @@ export default function AddProductos() {
 
     const cargarProductos = async () => {
         try {
-            const response = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/productos');
+            const response = await fetch('https://apipry.onrender.com/productos');
             if (response.ok) {
                 const data = await response.json();
                 setProductos(data);
@@ -60,7 +60,7 @@ const handleSubmit = async (event) => {
     event.preventDefault();
     try {
         if (modoEdicion) {
-            const response = await fetch(`https://apipry-dev-gjxn.1.us-1.fl0.io/productos/${productoEnEdicionId}`, {
+            const response = await fetch(`https://apipry.onrender.com/productos/${productoEnEdicionId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ const handleSubmit = async (event) => {
                 throw new Error('Error al editar el producto');
             }
         } else {
-            const response = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/productos/agregar', {
+            const response = await fetch('https://apipry.onrender.com/productos/agregar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -124,7 +124,7 @@ const handleSubmit = async (event) => {
 
 const handleEditar = async (id) => {
     try {
-        const response = await fetch(`https://apipry-dev-gjxn.1.us-1.fl0.io/productos/${id}`);
+        const response = await fetch(`https://apipry.onrender.com/productos/${id}`);
         if (response.ok) {
             const data = await response.json();
             // Establece el ID del producto en edición en la variable de estado
@@ -150,7 +150,7 @@ const handleEditar = async (id) => {
     const handleEliminar = async (id) => {
         // Aquí puedes implementar la lógica para eliminar un producto
         try {
-            const response = await fetch(`https://apipry-dev-gjxn.1.us-1.fl0.io/productos/${id}`, {
+            const response = await fetch(`https://apipry.onrender.com/productos/${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {

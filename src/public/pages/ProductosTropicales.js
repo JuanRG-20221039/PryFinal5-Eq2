@@ -7,7 +7,7 @@ import routes from '../../helpers/routes';
 
 export default function ProductosTropicales() {
 
-    const { data, loading } = useFetch('https://apipry-dev-gjxn.1.us-1.fl0.io/productos');
+    const { data, loading } = useFetch('https://apipry.onrender.com/productos');
     console.log(data);
 
     return (

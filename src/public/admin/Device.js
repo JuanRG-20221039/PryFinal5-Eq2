@@ -12,21 +12,23 @@ export default function Device() {
     const [usuarios, setUsuarios] = useState(null)
     const [loadingU, setLoadingU] = useState(true)
     const [dispositivo, setDispositivo] = useState(null)
+
     useEffect(() => {
         setLoading(true);
-        fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/devices')
+        fetch('https://apipry.onrender.com/devices')
             .then((response) => response.json())
             .then((data) => setData(data))
             .finally(() => setLoading(false))
-
     }, [reloadTable]);
 
     const [showModal, setShowModal] = useState(false);
+
     const eliminarDispositivo = async (dispositivoID) => {
         const response = await eliminarDispositivoRequest(dispositivoID)
         console.log(response)
         setReloadTable(!reloadTable);
     }
+
     const handleAsignarClick = async (dispositivoID) => {
         setDispositivo(dispositivoID)
         setShowModal(true);
@@ -64,7 +66,7 @@ export default function Device() {
                         <Table striped bordered hover responsive>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Token de Dispositivo</th>
                                     <th>Estado de la Ventana</th>
                                     <th>Cerradura</th>
                                     <th>Deteccion de Moviniento</th>
@@ -76,7 +78,7 @@ export default function Device() {
                             <tbody>
                                 {data.map(dispositivo => (
                                     <tr key={dispositivo._id}>
-                                        <td>{dispositivo._id}</td>
+                                        <td>{dispositivo.tokenD}</td>
                                         <td>{dispositivo.estado}</td>
                                         <td>{dispositivo.cerradura}</td>
                                         <td>{dispositivo.pir}</td>

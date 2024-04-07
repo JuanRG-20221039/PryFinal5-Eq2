@@ -14,7 +14,7 @@ export default function Informacion() {
     // Función para cargar la información desde el backend
     const fetchInformacion = async () => {
       try {
-        const response = await axios.get('https://apipry-dev-gjxn.1.us-1.fl0.io/informacion');
+        const response = await axios.get('https://apipry.onrender.com/informacion');
         setInformacion(response.data);
       } catch (error) {
         console.error('Error al cargar la información:', error);
@@ -26,7 +26,7 @@ export default function Informacion() {
 
   const handleEliminar = async (id) => {
     try {
-      await axios.delete(`https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/${id}`);
+      await axios.delete(`https://apipry.onrender.com/informacion/${id}`);
       setInformacion(informacion.filter(item => item._id !== id));
     } catch (error) {
       console.error('Error al eliminar la información:', error);
@@ -50,7 +50,7 @@ export default function Informacion() {
 
   const handleGuardarCambios = async () => {
     try {
-      await axios.put(`https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/${editId}`, { tipo, informacion: info });
+      await axios.put(`https://apipry.onrender.com/informacion/${editId}`, { tipo, informacion: info });
       const updatedInformacion = informacion.map(item => {
         if (item._id === editId) {
           return { ...item, tipo, informacion: info };

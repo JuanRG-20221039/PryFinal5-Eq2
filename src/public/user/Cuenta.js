@@ -12,7 +12,7 @@ export default function Cuenta() {
     // Verificamos si el usuario está autenticado
     if (user) {
       // Realizar la solicitud para obtener los datos del usuario basados en su ID
-      axios.get(`https://apipry-dev-gjxn.1.us-1.fl0.io/usuarios/${user.id}`)
+      axios.get(`https://apipry.onrender.com/usuarios/${user.id}`)
         .then(response => {
           // Almacenar los datos del usuario en el estado
           setUserData(response.data);

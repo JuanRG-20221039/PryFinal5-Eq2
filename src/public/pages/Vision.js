@@ -8,7 +8,7 @@ export default function Vision() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/tipo/VISI1');
+        const response = await fetch('https://apipry.onrender.com/informacion/tipo/VISI1');
         const data = await response.json();
         if (data.length > 0) {
           setVisi1Info(data[0].informacion);

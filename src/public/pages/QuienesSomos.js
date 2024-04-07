@@ -10,19 +10,19 @@ export default function QuienesSomos() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responseQS1 = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/tipo/QS1');
+        const responseQS1 = await fetch('https://apipry.onrender.com/informacion/tipo/QS1');
         const dataQS1 = await responseQS1.json();
         if (dataQS1.length > 0) {
           setQS1Info(dataQS1[0].informacion);
         }
 
-        const responseFE1 = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/tipo/FE1');
+        const responseFE1 = await fetch('https://apipry.onrender.com/informacion/tipo/FE1');
         const dataFE1 = await responseFE1.json();
         if (dataFE1.length > 0) {
           setFE1Info(dataFE1[0].informacion);
         }
 
-        const responseOBJ1 = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/tipo/OBJ1');
+        const responseOBJ1 = await fetch('https://apipry.onrender.com/informacion/tipo/OBJ1');
         const dataOBJ1 = await responseOBJ1.json();
         if (dataOBJ1.length > 0) {
           setOBJ1Info(dataOBJ1[0].informacion);

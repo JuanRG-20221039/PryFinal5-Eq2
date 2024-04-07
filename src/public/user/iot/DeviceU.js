@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from '../../../helpers/useFetch';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Card, Col, Container, FloatingLabel, Form, Modal, Row, Table } from 'react-bootstrap';
 import Cargando from '../../../components/Cargando';
 import { etiquetaRequest, actualizarCampoDispositivoRequest } from '../../../api/device';
@@ -14,7 +14,7 @@ function DeviceU() {
 
   const [reload, setReload] = useState(false);
   // Usa el ID en la URL para realizar la solicitud
-  const { data, loading } = useFetch(`https://apipry-dev-gjxn.1.us-1.fl0.io/devices/${id}`, {
+  const { data, loading } = useFetch(`https://apipry.onrender.com/devices/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -29,6 +29,7 @@ function DeviceU() {
     setNewLabel(e.target.value);
   };
 
+  //NOMBRE DEL DISPOSITIVO
   const handleSaveLabel = async () => {
     try {
       console.log('Nueva etiqueta:', newLabel);
@@ -52,6 +53,7 @@ function DeviceU() {
     }
   };
 
+  //ICONOS DE LOS WIGEDS
   const iconosVariables = {
     "estado": faHouseChimneyWindow,
     "cerradura": faLock,
@@ -81,10 +83,29 @@ function DeviceU() {
       alert('No puedes colocar la cerradura si la ventana está abierta!');
     }
   };
+
+  //SENSOR DE MOVINIENTO
   const handleSwitchAltMove = () => {
     const newPirState = data.dispositivo.pir === 1 ? 0 : 1;
     handleUpdateField('pir', newPirState);
-  };  
+  };
+
+  //ELIMINAR DISPOSITIVOS
+  const handleEliminarDispositivo = async () => {
+    try {
+        const response = await fetch(`https://apipry.onrender.com/devices/${id}`, {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          alert('Dispositivo eliminado correctamente');
+          // Realizar cualquier otra acción necesaria después de eliminar el dispositivo
+        } else {
+          alert('Error al eliminar el dispositivo:', response.statusText);
+        }
+    } catch (error) {
+      console.error('Error al eliminar el dispositivo:', error);
+    }
+};
 
   return (
     <Container className='mt-4'>
@@ -154,8 +175,8 @@ function DeviceU() {
                         <Col className='p-3' key={variable.id}>
                           <Card className='w-100' style={{ fontSize: 13, height:'90%' }}>
                             <Card.Header style={{ backgroundColor: '#219ebc', color: 'white' }}>
-                              <Card.Title style={{ fontSize: 30 }}>{variableData}</Card.Title>
-                              <FontAwesomeIcon className='me-3' icon={icono} style={{color: "#fff",height:40, position:'absolute', marginTop:-40, marginLeft:75}} />
+                              <Card.Title style={{ fontSize: 30 , marginLeft:-50}}>{variableData}</Card.Title>
+                              <FontAwesomeIcon className='me-3' icon={icono} style={{color: "#fff",height:40, position:'absolute', marginTop:-40, marginLeft:5}} />
                             </Card.Header>
                             <Card.Body style={{ backgroundColor: 'white', color: 'black' }}>
                               <Card.Text>{variable.id}</Card.Text>
@@ -181,7 +202,7 @@ function DeviceU() {
                     <Card.Body>
                       <Card.Title>Estado de la ventana</Card.Title>
                       <Card.Text>{data.dispositivo.estado === 1 ? "CERRADA" : "ABIERTA"}</Card.Text>
-                      <div style={{ width: '100%',marginLeft:50 }} onClick={() => handleSwitchEstado()}>
+                      <div style={{ width: '100%'}} onClick={() => handleSwitchEstado()}>
                         <FontAwesomeIcon 
                           icon={data.dispositivo.estado === 1 ? faPowerOff : faPowerOff} 
                           style={{ color: data.dispositivo.estado === 1 ? 'red' : 'green', height: '50%', width: '50%', cursor: 'pointer' }} 
@@ -195,7 +216,7 @@ function DeviceU() {
                     <Card.Body>
                       <Card.Title>Cerradura</Card.Title>
                       <Card.Text>{data.dispositivo.cerradura === 1 ? "CERRADA" : "ABIERTA"}</Card.Text>
-                      <div style={{ width: '100%',marginLeft:50 }} onClick={() => handleSwitchCerradura()}>
+                      <div style={{ width: '100%'}} onClick={() => handleSwitchCerradura()}>
                         <FontAwesomeIcon
                           icon={data.dispositivo.cerradura === 1 ? faLock : faLockOpen}
                           style={{ color: data.dispositivo.cerradura === 1 ? '#fb8500' : 'grey', height: '50%', width: '50%', cursor: 'pointer' }}
@@ -209,7 +230,7 @@ function DeviceU() {
                     <Card.Body>
                       <Card.Title>Alerta de movimiento</Card.Title>
                       <Card.Text>{data.dispositivo.pir === 1 ? "ACTIVADA" : "DESACTIVADA"}</Card.Text>
-                      <div style={{ width: '100%',marginLeft:50 }} onClick={() => handleSwitchAltMove()}>
+                      <div style={{ width: '100%'}} onClick={() => handleSwitchAltMove()}>
                         <FontAwesomeIcon
                           icon={data.dispositivo.pir === 1 ? faToggleOn : faToggleOff}
                           style={{ color: data.dispositivo.pir === 1 ? '#219ebc' : 'grey', height: '50%', width: '50%', cursor: 'pointer' }}
@@ -224,9 +245,9 @@ function DeviceU() {
                       <Card.Title>Lluvia</Card.Title>
                       <Card.Text>{data.dispositivo.lluvia === 1 ? "ESTA LLOVIENDO" : "DESPEJADO..."}</Card.Text>
                       {data.dispositivo.lluvia === 1 ? (
-                        <FontAwesomeIcon icon={faCloudRain} style={{ color: '#5ca8d2', height: '50%', width: '50%' , marginTop:10 , marginLeft:50 }} />
+                        <FontAwesomeIcon icon={faCloudRain} style={{ color: '#5ca8d2', height: '50%', width: '50%' , marginTop:10}} />
                       ) : (
-                        <FontAwesomeIcon icon={faCloud} style={{ color: 'grey', height: '50%', width: '50%' , marginTop:10 , marginLeft:50  }} />
+                        <FontAwesomeIcon icon={faCloud} style={{ color: 'grey', height: '50%', width: '50%' , marginTop:10}} />
                       )}
                     </Card.Body>
                   </Card>
@@ -234,6 +255,11 @@ function DeviceU() {
                 </div>
               </Row>
             </Row>
+          </Col>
+          <Col>
+            <Link to="/user/iot/devices" style={{ textDecoration: 'none' }}>
+              <Button variant='danger' style={{ margin: 20, width: '50%' }} onClick={handleEliminarDispositivo}>Eliminar Dispositivo</Button>
+            </Link>
           </Col>
         </Row>
       )}

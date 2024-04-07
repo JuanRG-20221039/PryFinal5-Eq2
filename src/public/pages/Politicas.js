@@ -9,13 +9,13 @@ export default function Politicas() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responseRG1 = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/tipo/RG1');
+        const responseRG1 = await fetch('https://apipry.onrender.com/informacion/tipo/RG1');
         const dataRG1 = await responseRG1.json();
         if (dataRG1.length > 0) {
           setRG1Info(dataRG1[0].informacion);
         }
 
-        const responseRGH1 = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/informacion/tipo/RGH1');
+        const responseRGH1 = await fetch('https://apipry.onrender.com/informacion/tipo/RGH1');
         const dataRGH1 = await responseRGH1.json();
         if (dataRGH1.length > 0) {
           setRGH1Info(dataRGH1[0].informacion);

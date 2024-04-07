@@ -8,7 +8,7 @@ export default function FAQ() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/faq');
+        const response = await fetch('https://apipry.onrender.com/faq');
         const data = await response.json();
         setFaqData(data);
       } catch (error) {

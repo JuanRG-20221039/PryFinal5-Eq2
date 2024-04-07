@@ -39,7 +39,7 @@ const handleEnviarContrasena = async () => {
 
   try {
     // Realizar la solicitud para cambiar la contraseña utilizando el ID del usuario
-    const responseCambioContrasena = await fetch(`https://apipry-dev-gjxn.1.us-1.fl0.io/usuarios/${id}/cambiar-contrasena`, {
+    const responseCambioContrasena = await fetch(`https://apipry.onrender.com/usuarios/${id}/cambiar-contrasena`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -100,12 +100,12 @@ const handleClose = () => {
 
   const buscarEmail = async () => {
     try {
-      const response = await fetch('https://apipry-dev-gjxn.1.us-1.fl0.io/usuarios');
+      const response = await fetch('https://apipry.onrender.com/usuarios');
       const data = await response.json();
       const usuario = data.find(user => user.datosCuenta.email === email);
       if (usuario) {
         const idPregunta = usuario.datosCuenta.preguntaRecuperacion.idPregunta;
-        const preguntaResponse = await fetch(`https://apipry-dev-gjxn.1.us-1.fl0.io/questions/${idPregunta}`);
+        const preguntaResponse = await fetch(`https://apipry.onrender.com/questions/${idPregunta}`);
         const preguntaData = await preguntaResponse.json();
         if (preguntaData.pregunta) {
           setPreguntaSecreta(preguntaData.pregunta);

@@ -8,7 +8,7 @@ import useAuth from '../../auth/useAuth';
 
 const Registro = () => {
   const [datos, setDatos] = useState('Personales', { required: true });
-  const { data, loading } = useFetch('https://apipry-dev-gjxn.1.us-1.fl0.io/questions', { required: true });
+  const { data, loading } = useFetch('https://apipry.onrender.com/questions', { required: true });
 
   const { register, handleSubmit, formState: { errors }, trigger } = useForm();
   const { signup, user } = useAuth();
@@ -129,7 +129,7 @@ const Registro = () => {
                         </Alert>
                       )}
                     </Container>
-                    <Button variant='outline-primary' className=" me-2" onClick={handleSiguienteClick}>
+                    <Button style={{marginBottom:10}} variant='outline-primary' className=" me-2" onClick={handleSiguienteClick}>
                       Siguiente
                     </Button>
                   </>
@@ -215,7 +215,7 @@ const Registro = () => {
                         <Alert variant='danger'>El campo es requerido</Alert>
                       )}
                     </Container>
-                    <Button variant='outline-primary' className=" me-2" onClick={() => changeDatos('Personales', { required: true })}>
+                    <Button style={{marginBottom:10}} variant='outline-primary' className=" me-2" onClick={() => changeDatos('Personales', { required: true })}>
                       Regresar
                     </Button>
                   </>
