@@ -11,20 +11,60 @@ import { faHouseSignal, faHouseChimneyWindow, faCloudRain, faLock, faLockOpen, f
 
 function DeviceU() {
   const { id } = useParams();
-
+  const [newLabel, setNewLabel] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [previousData, setPreviousData] = useState(null); // Para almacenar los datos anteriores
+  const [data, setData] = useState(null); // Para almacenar los datos actuales
   const [reload, setReload] = useState(false);
-  // Usa el ID en la URL para realizar la solicitud
-  const { data, loading } = useFetch(`https://apipry.onrender.com/devices/${id}`, {
+
+  const { loading } = useFetch(`https://apipry.onrender.com/devices/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   }, reload);
+
+  const fetchData = async () => {
+    try {
+      const newData = await fetch(`https://apipry.onrender.com/devices/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then(response => response.json());
+
+      // Comparar los datos anteriores con los nuevos
+      if (JSON.stringify(previousData) !== JSON.stringify(newData)) {
+        setData(newData);
+      }
+    } catch (error) {
+      console.error('Error al obtener datos:', error);
+    }
+  };
+
+  // Consulta la API cada segundo
+  useEffect(() => {
+    const intervalId = setInterval(fetchData, 1000);
+    
+    // Limpia el intervalo cuando el componente se desmonta
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    // Almacena los datos actuales como datos anteriores después de actualizar
+    if (data) {
+      setPreviousData(data);
+    }
+  }, [data]);
+
+  if (!data) {
+    return <Cargando />;
+  }
+
   const formatFecha = (fecha) => {
     return new Date(fecha).toLocaleString();
   };
-  const [newLabel, setNewLabel] = useState('');
-  const [showModal, setShowModal] = useState(false);
+
   const handleLabelChange = (e) => {
     setNewLabel(e.target.value);
   };
